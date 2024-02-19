@@ -51,7 +51,39 @@ def characterReplacement(s, k):
         res = max(res, r - l + 1)
     return res
 
+def characterReplacementMoreEfficient(s, k):
+    """
+    :type s: str
+    :type k: int
+    :rtype: int
+    """
 
+    """
+    To optimize the code, instead of calculating the max for each valid substring, we can keep track of the maximum max of all the windows,
+    since it being a smaller value won't give us a better answer.
+    """
+
+    # We will keep track of the amount of each letter in the window
+    occurences = {}
+    # We will store the best result so far here
+    res = 0
+    # Left pointer
+    l = 0
+    # We keep track of the maximum ocurrence of a letter in all the windows
+    max_occurence = 0
+    
+    # We make r bigger through each iteration
+    for r in range(len(s)):
+        occurences[s[r]] = occurences.get(s[r], 0) + 1
+        max_occurence = max(max_occurence, occurences[s[r]])
+        
+        # If the amount of letters that are not the maximum is bigger than k we move the window to the right
+        while (r - l + 1) - max_occurence > k:
+            occurences[s[l]] -= 1
+            l += 1
+        # We update the result
+        res = max(res, r - l + 1)
+    return res
 
 def characterReplacementFirstAttempt(s, k):
     """
