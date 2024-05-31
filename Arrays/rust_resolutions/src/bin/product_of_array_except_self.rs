@@ -23,7 +23,7 @@ fn _product_except_self(nums: Vec<i32>) -> Vec<i32> {
     products
 }
 
-fn product_except_self_better(nums: Vec<i32>) -> Vec<i32> {
+fn _product_except_self_better(nums: Vec<i32>) -> Vec<i32> {
     let mut products = vec![0; nums.len()];
     let mut left_product = 1;
     let mut right_product = 1;
