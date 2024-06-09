@@ -1,1 +1,2 @@
-Resolutions for various leetcode problems
+# Leet Code Resolutions
+Resolutions for various leetcode problems in Rust and in Python
